@@ -1,0 +1,23 @@
+*{
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 3px;
+    margin: 0px;
+}
+
+header{
+    background-color: rgb(199, 175, 224);
+    padding: 20px;
+    
+}
+
+.bolsa{
+    background-color: rgb(130, 130, 218);
+    border-color: rgb(130, 130, 218);
+    color:white;
+    padding: 5px;
+    border: 6px;
+}
+
+.mercado{
+    width: 50px;
+}
