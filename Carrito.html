@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/jpg" href="/favicon.jpg" />
     <title>Document</title>
 </head>
@@ -12,13 +15,150 @@
 <body>
 
     <header>
-        <input type="text" id="menu" placeholder="¿Que producto buscas?" required>
-        <button class="bolsa">Agregar</button>
+        <h2>Carrito de Confianza</h2>
     </header>
 
+    <section class="Contenedor">
 
+        <div class="Contenedor-items">
 
-    <script src="Carrito.js"></script>
+            <div class="Item">
+                <span class="Producto">Mantequilla sin Sal</span>
+                <img src="Img/mantequilla.png" class="Item-img">
+                <span class="Precio">$9.000</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Mantequilla Fina</span>
+                <img src="Img/Mfina.png" class="Item-img">
+                <span class="Precio">6.700</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Aceite</span>
+                <img src="Img/Aceite.jpg" class="Item-img">
+                <span class="Precio">$20.000</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Aceite</span>
+                <img src="Img/AVegetal.jpg" class="Item-img">
+                <span class="Precio">24.000</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Arroz Diana</span>
+                <img src="Img/ArrozDiana.png" class="Item-img">
+                <span class="Precio">$5.500</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Arroz Roa</span>
+                <img src="Img/ArrozRoa.png" class="Item-img">
+                <span class="Precio">6.700</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Sal</span>
+                <img src="Img/Sal.png" class="Item-img">
+                <span class="Precio">$3.500</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Sal Refisal</span>
+                <img src="Img/SalR.png" class="Item-img">
+                <span class="Precio">6.000</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Jabon</span>
+                <img src="Img/jabon.png" class="Item-img">
+                <span class="Precio">$5.000</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Crema Dental</span>
+                <img src="Img/Colgate.png" class="Item-img">
+                <span class="Precio">6.000</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+            <div class="Item">
+                <span class="Producto">Crema Dental Niños</span>
+                <img src="Img/cremaNiños.png" class="Item-img">
+                <span class="Precio">8.100</span>
+                <button class="boton-item">Agregar al carrito</button>
+            </div>
+
+        </div>
+
+        <div class="Carrito">
+            <div class="header-Carrito">
+                <h2>Tú carrito</h2>
+            </div>
+
+            <div class="Carrito-items">
+                <div class="Carrito-item">
+                    <img src="Img/mantequilla.png" class="Carrito-img">
+                    <div class="Carrito-detalle">
+                        <span class="Producto-nombre">Crema Dental Niños</span>
+                        <div class="Selector-cantidad">
+                            <i class="fa-solid fa-minus Restar-cantidad"></i>
+                            <input type="text" value="1" class="carrito-cantidad" disabled>
+                            <i class="fa-solid fa-plus Sumar-cantidad"></i>
+
+                        </div>
+                        <span class="Total-carrito">$8.100
+                            <span class="Eliminar-producto">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div class="Carrito-item">
+                    <img src="Img/mantequilla.png" class="Carrito-img">
+                    <div class="Carrito-detalle">
+                        <span class="Producto-nombre">mantequilla Sin sal</span>
+                        <div class="Selector-cantidad">
+                            <i class="fa-solid fa-minus Restar-cantidad"></i>
+                            <input type="text" value="2" class="carrito-cantidad" disabled>
+                            <i class="fa-solid fa-plus Sumar-cantidad"></i>
+
+                        </div>
+                        <span class="Total-carrito">$7.000
+                            <span class="Eliminar-producto">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div class="Total-producto">
+                    <div class="fila">
+                        <strong>Total</strong>
+                        <span class="Precio-total">
+                            $34.000
+                        </span>
+                    </div>
+                    <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping Bolsa-compra"></i></button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="Carrito.js"></script>
 
 </body>

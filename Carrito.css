@@ -1,23 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@1,500&family=Noto+Sans+Tangsa&family=Padyakke+Expanded+One&family=Roboto:ital,wght@0,100;0,300;1,100&display=swap');
+
 *{
     font-family:Arial, Helvetica, sans-serif;
     padding: 3px;
     margin: 0px;
+    font-family: 'Open sans';
 }
 
 header{
-    background-color: rgb(199, 175, 224);
-    padding: 20px;
-    
-}
-
-.bolsa{
-    background-color: rgb(130, 130, 218);
-    border-color: rgb(130, 130, 218);
+    background-color: rgb(212, 70, 65);
+    padding: 20px; 
+    text-align: center;
     color:white;
-    padding: 5px;
-    border: 6px;
+    font-size: 25px;
 }
 
-.mercado{
-    width: 50px;
+.Contenedor{
+   max-width: 1200px;
+   padding: 10px;
+   margin: auto;
+   display: flex;
+   justify-content: space-between;
+   contain: paint;
 }
+
+.Contenedor .Contenedor-items{
+    margin-top:30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    grid-gap: 30px;
+    grid-row-gap: 30px;
+    width: 60%;
+}
+
+.Contenedor .Contenedor-items .Item{
+    max-width: 200px;
+    margin: auto;
+    border: 1px solid #666;
+    border-radius: 10px;
+
+}
+
+.Contenedor-items .Item:hover{
+    box-shadow: 0 0 10px #666;
+    scale: 1.05;
+}
+
+.Contenedor-items .Item .Item-img{
+    width: 85%;
+}
+
+.Contenedor-items .Item .Producto{
+   display:block;
+   font-weight: bold;
+   text-align: center;
+   text-transform: uppercase;
+}
+
+.Contenedor-items .Item .Precio{
+    display:block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.Contenedor-items .Item .boton-item{
+    display: block;
+    margin: 10px auto;
+    border:none;
+    background: black;
+    color:white;
+    padding:  5px 15px;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.Carrito{
+    border:1px solid#666;
+    width: 30%;
+    margin-top:10px;
+    border-radius: 10px;
+    margin-bottom: auto;
+    top:0;
+    position: sticky;
+    overflow: hidden;
+    transform:  .3s;
+}
+
+.Carrito-img{
+    width: 20%;
+    height: 20%;
+}
+
+.Carrito .header-Carrito {
+    padding: 20px;
+    background-color: #000;
+    color:white;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.Carrito .Carrito-item{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #666;
+    padding: 20px;
+}
+
+.Carrito .Carrito-item .Producto-nombre{
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.Carrito .Carrito-item .Selector-cantidad{
+    display: inline-block;
+    margin-right: 25px;
+}
+
+.Carrito .Carrito-item .carrito-cantidad{
+    border:none;
+    font-size: 18px;
+    background: transparent;
+    display: inline-block;
+    width: 30px;
+    padding: 5px;
+    text-align: center;
+}
+
+.Carrito .Carrito-item .Selector-cantidad i{
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    border:1px solid #000;
+    cursor:pointer;
+}
+
+.Carrito .Carrito-item .Total-carrito{
+    font-weight: bold;
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.Carrito .Carrito-item .Eliminar-producto{
+    right: 10px;
+    top:15px;
+    color:#000;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #000;
+    display: block;
+    cursor:pointer;
+    display: block;
+    background: transparent;
+    z-index: 20;
+}
+
+.Carrito .Carrito-item .Eliminar-producto{
+  cursor: pointer;
+}
+
+.Total-producto{
+    background-color:#f3f3f3;
+}
+
+.Total-producto .fila{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.Total-producto .btn-pagar{
+    display:block;
+    width: 100%;
+    border:none;
+    background: #000;
+    color:#fff;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    cursor:pointer;
+    transition: .3s;
+}
+
+
+
