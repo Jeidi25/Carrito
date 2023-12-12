@@ -21,9 +21,9 @@ function ready(){
 }
 
 function botonEliminar(event){
-      actualizarTotalCarrito();
-    //  var buttonClicked = event.target;
-    // buttonClicked.parentElement.parentElement.parentElement.remove();
+    actualizarTotalCarrito();
+    var buttonClicked = event.target;
+    buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();
   
   }
 
@@ -52,5 +52,35 @@ function actualizarTotalCarrito(){
 total = Math.round(total *100)/100;
 precioTotal = precioTotal - total
 document.getElementsByClassName ('Precio-total') [0].innerText = '$' + precioTotal. toLocaleString("es") + '00';
-console.log(total)
 }                                                                                                                                                                                                        
+
+    function ocultarCarrito() {
+      const carritoItems = document.getElementsByClassName('Carrito-items')[0];
+     if(carritoItems.childElementCount==0){
+        var carrito = document.getElementsByClassName('Carrito')[0];
+        carritoVisible=false;
+     }
+    
+     var items = document.getElementById('Contenedor-items')[0];
+    
+    }
+
+    const elementos = document.querySelectorAll ('Item');
+    const elementosArray =[];
+
+    elementos.forEach(elemento =>{
+        const producto = elemento.getAttribute ('Producto');
+        const Img = elemento.getAttribute ('Item-img');
+        const precio = elemento.getAttribute ('Precio');
+
+        const elementoProducto = {
+            producto : producto,
+            Img : Img,
+            precio :precio
+        };
+        
+        elementosArray.push(elementoProducto);
+    })
+
+    const elementoJSON = JSON. stringify(elementosArray);
+    console.log(elementoJSON);
