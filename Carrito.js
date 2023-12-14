@@ -113,7 +113,6 @@ function calcularValorTotalCarrito() {
 }
 
 function agregarAlCarrito(idProducto) {
-    //const botonAgregar = event.target;
     const productoEnCarrito = carrito.productos.filter((item) => { return item.id == idProducto })[0];
     if (productoEnCarrito == undefined) {
         const producto_a_agregar = productos.filter((item) => { return item.id == idProducto })[0];
