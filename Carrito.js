@@ -145,14 +145,5 @@ function agregarAlCarrito(event) {
     const elementoExistente = document.querySelector('.Carrito-items');
     contenedor.insertBefore(nuevoElemento, carrito.nextSibling);
 
-    // const botonEliminarItem = nuevoItem.querySelector('.Eliminar-producto');
-    // botonEliminarItem.addEventListener('click', botonEliminar);
-
-    // const botonesSumar = nuevoItem.querySelector('.Sumar-cantidad');
-    // botonesSumar.addEventListener('click', sumarCantidad);
-
-    // const botonesRestar = nuevoItem.querySelector('.Restar-cantidad');
-    // botonesRestar.addEventListener('click', restarCantidad);
-
-    // actualizarTotalCarrito();
+    
 }
