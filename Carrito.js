@@ -17,41 +17,71 @@ function ready(){
     for(var i=0; i < botonEliminarItem. length; i++){
         var button = botonEliminarItem[i];
         button.addEventListener('click', botonEliminar);
-    }
+   }
 
-function botonEliminar(event){
-    actualizarTotalCarrito();
+ function botonEliminar(event){
+   actualizarTotalCarrito();
     var buttonClicked = event.target;
-    buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();
-  
+   buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();  
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const botonesSumar = document.querySelectorAll('.Sumar-cantidad');
+    const botonesRestar = document.querySelectorAll('.Restar-cantidad');
+
+    botonesSumar.forEach(boton => {
+        boton.addEventListener('click', sumarCantidad);
+    });
+
+    botonesRestar.forEach(boton => {
+        boton.addEventListener('click', restarCantidad);
+    });
+});
+
+function sumarCantidad(event) {
+    const botonSumar = event.target;
+    const contenedorItem = botonSumar.closest('.Carrito-item');
+    const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
+    let cantidad = parseInt(inputCantidad.value);
+    cantidad++;
+    inputCantidad.value = cantidad;
+    actualizarPrecioTotal(contenedorItem, cantidad);
+    actualizarTotalCarrito();
+}
+
+function restarCantidad(event) {
+    const botonRestar = event.target;
+    const contenedorItem = botonRestar.closest('.Carrito-item');
+    const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
+    let cantidad = parseInt(inputCantidad.value);
+    if (cantidad > 1) {
+        cantidad--;
+        inputCantidad.value = cantidad;
+        actualizarPrecioTotal(contenedorItem, cantidad);
+        actualizarTotalCarrito();
     }
+}
 
-function actualizarTotalCarrito(){
-    var carritoContenedor = document.getElementsByClassName('Carrito')[0];
-    var carritoItems = carritoContenedor.getElementsByClassName('Carrito-item');
-    var total = 0;
+function actualizarPrecioTotal(item, cantidad) {
+    const precioUnitario = parseFloat(item.querySelector('.Total-carrito').textContent.replace('$', ''));
+    const precioTotal = (precioUnitario * cantidad).toFixed(2);
+    item.querySelector('.Total-carrito').textContent = `$${precioTotal}`;
+}
 
-    for(var i=0; i < carritoItems.length;i++){
-    var item = carritoItems[i];
-    var precioElemento= item.getElementsByClassName('Total-carrito')[0];
-    console.log(precioElemento);
+function actualizarTotalCarrito() {
+    const carritoItems = document.querySelectorAll('.Carrito-item');
+    let total = 0;
 
-    var precio = parseFloat(precioElemento.innerText.replace ('$',''));
-    console.log(precio);
-    var carrioCantidad = item.getElementsByClassName('carrito-cantidad') [0];
-    var cantidad = carrioCantidad.value;
-    console.log(carrioCantidad);
-    console.log (cantidad);
-    total = total + (precio * cantidad)
-    }  
+    carritoItems.forEach(item => {
+        const precio = parseFloat(item.querySelector('.Total-carrito').textContent.replace('$', ''));
+        total += precio;
+    });
 
-    var precioTotal = document.getElementsByClassName ('Precio-total') [0].innerText.replace ('$','');
-
-
-total = Math.round(total *100)/100;
-precioTotal = precioTotal - total
-document.getElementsByClassName ('Precio-total') [0].innerText = '$' + precioTotal. toLocaleString("es") + '00';
-}                                                                                                                                                                                                        
+    const precioTotalElement = document.querySelector('.Precio-total');
+    precioTotalElement.textContent = `$${total.toFixed(2)}`;
+}
+                                                                                                                                                      
 
     function mostrarProducto(){
         var divProductos = document.getElementById('Contenedor-items');
@@ -70,32 +100,3 @@ document.getElementsByClassName ('Precio-total') [0].innerText = '$' + precioTot
         })
           divProductos.innerHTML=objetoPintar;
     };
-
-     // function ocultarCarrito() {
-    //   const carritoItems = document.getElementsByClassName('Carrito-items')[0];
-    //  if(carritoItems.childElementCount==0){
-    //     var carrito = document.getElementsByClassName('Carrito')[0];
-    //     carritoVisible=false;
-    //  }
-    
-    //  const contenedorItems = document.getElementsByClassName('Contenedor-items');
-    
-    // elementos.forEach(elemento =>{
-    //     const producto = elemento.getElementsByClassName ('Producto')[0].innerHTML; 
-    //     const Img = elemento.getElementsByClassName ('Item-img')[0].src;
-    //     const precio = elemento.getElementsByClassName ('Precio')[0].innerHTML;
-
-    //     const elementoProducto = {
-    //         producto : producto,
-    //         Img : Img,
-    //         precio :precio
-    //     };
-        
-    // elementosArray.push(elementoProducto);
-
-
-    // const elementoJSON = JSON.stringify(elementosArray);
-    // console.log(elementoJSON);
-
-    //  })
-    // }
