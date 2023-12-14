@@ -99,4 +99,54 @@ function actualizarTotalCarrito() {
             console.log(divProductos)
         })
           divProductos.innerHTML=objetoPintar;
-    };
+    };document.addEventListener('DOMContentLoaded', function() {
+
+    const botonesAgregar = document.querySelectorAll('.boton-item');
+
+    botonesAgregar.forEach(boton => {
+        boton.addEventListener('click', agregarAlCarrito);
+    });
+});
+
+function agregarAlCarrito(event) {
+    const botonAgregar = event.target;
+    const contenedorItem = botonAgregar.closest('.Item');
+    const nombreProducto = contenedorItem.querySelector('.Producto').textContent;
+    const precioProducto = contenedorItem.querySelector('.Precio').textContent;
+    const imagenProducto = contenedorItem.querySelector('.Item-img').src;
+    const carrito = document.querySelector('.Carrito-items');
+    const nuevoItem = document.createElement('div');
+    nuevoItem.classList.add('Carrito-item');
+
+    nuevoItem.innerHTML = `
+    
+        <img src="${imagenProducto}" class="Carrito-img">
+        <div class="Carrito-detalle">
+            <span class="Producto-nombre">${nombreProducto}</span>
+            <div class="Selector-cantidad">
+                <i class="fa-solid fa-minus Restar-cantidad"></i>
+                <input type="text" value="1" class="carrito-cantidad" disabled>
+                <i class="fa-solid fa-plus Sumar-cantidad"></i>
+            </div>
+            <span class="Total-carrito">${precioProducto}
+                <span class="Eliminar-producto">
+                    <i class="fa-solid fa-trash"></i>
+                </span>
+            </span>
+             <button class="btn-pagar">Pagar <i class="fa-solid fa-bag-shopping Bolsa-compra"></i></button>
+        </div>
+    `;
+
+    carrito.appendChild(nuevoItem);
+
+    const botonEliminarItem = nuevoItem.querySelector('.Eliminar-producto');
+    botonEliminarItem.addEventListener('click', botonEliminar);
+
+    const botonesSumar = nuevoItem.querySelector('.Sumar-cantidad');
+    botonesSumar.addEventListener('click', sumarCantidad);
+
+    const botonesRestar = nuevoItem.querySelector('.Restar-cantidad');
+    botonesRestar.addEventListener('click', restarCantidad);
+
+    actualizarTotalCarrito();
+}
