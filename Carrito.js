@@ -13,57 +13,8 @@ if (document.readyState == 'loading') {
 function ready() {
 
     mostrarProducto();
-}
+} 
 
-var botonEliminarItem = document.getElementsByClassName('Eliminar-producto');
-for (var i = 0; i < botonEliminarItem.length; i++) {
-    var button = botonEliminarItem[i];
-    button.addEventListener('click', botonEliminar);
-}
-
-function botonEliminar(event) {
-    actualizarTotalCarrito();
-    var buttonClicked = event.target;
-    buttonClicked.parentElement.parentElement.parentElement.parentElement.remove();
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    const botonesSumar = document.querySelectorAll('.Sumar-cantidad');
-    const botonesRestar = document.querySelectorAll('.Restar-cantidad');
-
-    botonesSumar.forEach(boton => {
-        boton.addEventListener('click', sumarCantidad);
-    });
-
-    botonesRestar.forEach(boton => {
-        boton.addEventListener('click', restarCantidad);
-    });
-});
-
-function sumarCantidad(event) {
-    const botonSumar = event.target;
-    const contenedorItem = botonSumar.closest('.Carrito-item');
-    const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
-    let cantidad = parseInt(inputCantidad.value);
-    cantidad++;
-    inputCantidad.value = cantidad;
-    actualizarPrecioTotal(contenedorItem, cantidad);
-    actualizarTotalCarrito();
-}
-
-function restarCantidad(event) {
-    const botonRestar = event.target;
-    const contenedorItem = botonRestar.closest('.Carrito-item');
-    const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
-    let cantidad = parseInt(inputCantidad.value);
-    if (cantidad > 1) {
-        cantidad--;
-        inputCantidad.value = cantidad;
-        actualizarPrecioTotal(contenedorItem, cantidad);
-        actualizarTotalCarrito();
-    }
-}
 
 function actualizarPrecioTotal(item, cantidad) {
     const precioUnitario = parseFloat(item.querySelector('.Total-carrito').textContent.replace('$', ''));
@@ -83,7 +34,6 @@ function actualizarTotalCarrito() {
     const precioTotalElement = document.querySelector('.Precio-total');
     precioTotalElement.textContent = `$${total.toFixed(2)}`;
 }
-
 
 function mostrarProducto() {
     fetch(urlAPIProductos).then((response) => { return response.json() }).then((listaProductos) => {
@@ -110,6 +60,12 @@ function calcularValorTotalCarrito() {
         carrito.valorTotal = carrito.valorTotal + elemento.precio
     });
     document.getElementById('Precio-total').innerHTML = carrito.valorTotal;
+}
+
+function botonEliminar(event) {
+    actualizarTotalCarrito();
+    const buttonClicked = event.target;
+    buttonClicked.closest('.Carrito-item').remove();
 }
 
 function agregarAlCarrito(idProducto) {
@@ -150,49 +106,42 @@ function agregarAlCarrito(idProducto) {
     function ready() {
     mostrarProducto();
 
-    const botonesSumar = document.querySelectorAll('.Sumar-cantidad');
-    const botonesRestar = document.querySelectorAll('.Restar-cantidad');
-    const botonesEliminar = document.querySelectorAll('.Eliminar-producto');
+     const botonesSumar = document.querySelectorAll('.Sumar-cantidad');
+     const botonesRestar = document.querySelectorAll('.Restar-cantidad');
+     const botonesEliminar = document.querySelectorAll('.Eliminar-producto');
 
-    botonesSumar.forEach(boton => {
-        boton.addEventListener('click', sumarCantidad);
-    });
+   botonesSumar.forEach(boton => {
+         boton.addEventListener('click', sumarCantidad);
+     });
+     botonesRestar.forEach(boton => {
+         boton.addEventListener('click', restarCantidad);
+     });
 
-    botonesRestar.forEach(boton => {
-        boton.addEventListener('click', restarCantidad);
-    });
+     botonesEliminar.forEach(boton => {
+         boton.addEventListener('click', botonEliminar);
+     });
+ }
 
-    botonesEliminar.forEach(boton => {
-        boton.addEventListener('click', botonEliminar);
-    });
-}
+ function sumarCantidad(event) {
+     const botonSumar = event.target;
+     const contenedorItem = botonSumar.closest('.Carrito-item');
+     const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
+     let cantidad = parseInt(inputCantidad.value);
+     cantidad++;
+     inputCantidad.value = cantidad;
+     actualizarPrecioTotal(contenedorItem, cantidad);
+     actualizarTotalCarrito();
+ }
 
-function sumarCantidad(event) {
-    const botonSumar = event.target;
-    const contenedorItem = botonSumar.closest('.Carrito-item');
-    const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
-    let cantidad = parseInt(inputCantidad.value);
-    cantidad++;
-    inputCantidad.value = cantidad;
-    actualizarPrecioTotal(contenedorItem, cantidad);
-    actualizarTotalCarrito();
-}
-
-function restarCantidad(event) {
-    const botonRestar = event.target;
-    const contenedorItem = botonRestar.closest('.Carrito-item');
-    const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
-    let cantidad = parseInt(inputCantidad.value);
-    if (cantidad > 1) {
-        cantidad--;
-        inputCantidad.value = cantidad;
-        actualizarPrecioTotal(contenedorItem, cantidad);
-        actualizarTotalCarrito();
-    }
-}
-
-function botonEliminar(event) {
-    actualizarTotalCarrito();
-    const buttonClicked = event.target;
-    buttonClicked.closest('.Carrito-item').remove();
-}
+ function restarCantidad(event) {
+     const botonRestar = event.target;
+     const contenedorItem = botonRestar.closest('.Carrito-item');
+     const inputCantidad = contenedorItem.querySelector('.carrito-cantidad');
+     let cantidad = parseInt(inputCantidad.value);
+     if (cantidad > 1) {
+         cantidad--;
+         inputCantidad.value = cantidad;
+         actualizarPrecioTotal(contenedorItem, cantidad);
+         actualizarTotalCarrito();
+     }
+ }
